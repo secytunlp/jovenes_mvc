@@ -1,0 +1,52 @@
+<!-- BEGIN: main -->
+<style>
+
+#total_gral{
+	text-align: right;
+	font-weight: bold;
+}
+</style>
+<script type="text/javascript">
+
+function sumar_total(){
+	var tot1 = $('#tot_tipo1').text()
+	tot1 = tot1.replace('$','');
+	tot1 = tot1.replace('.','');
+	tot1 = tot1.replace(',','.');
+	var tot2 = $('#tot_tipo2').text()
+	tot2 = tot2.replace('$','');
+	tot2 = tot2.replace('.','');
+	tot2 = tot2.replace(',','.');
+	var tot3 = $('#tot_tipo3').text()
+	tot3 = tot3.replace('$','');
+	tot3 = tot3.replace('.','');
+	tot3 = tot3.replace(',','.');
+	var tot4 = $('#tot_tipo4').text()
+	tot4 = tot4.replace('$','');
+	tot4 = tot4.replace('.','');
+	tot4 = tot4.replace(',','.');
+	var tot5 = $('#tot_tipo5').text()
+	tot5 = tot5.replace('$','');
+	tot5 = tot5.replace('.','');
+	tot5 = tot5.replace(',','.');
+	$('#tot_gral').text(FormatToCurrency((parseFloat(tot1)+parseFloat(tot2)+parseFloat(tot3)+parseFloat(tot4)+parseFloat(tot5)),2));
+	
+}
+
+
+$(document).ready( sumar_total );
+
+</script>
+<div id="presupuestos_gral">
+{tipo_1}
+{tipo_2}
+{tipo_3}
+{tipo_4}
+{tipo_5}
+<div id='total_gral'>{total_gral_lbl}:<span id=tot_gral>{total_gral}</span></div>
+
+
+</fieldset>
+    
+</div>
+<!-- END: main -->

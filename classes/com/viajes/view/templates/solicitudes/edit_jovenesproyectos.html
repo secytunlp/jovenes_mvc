@@ -1,0 +1,169 @@
+<!-- BEGIN: main -->
+<style>
+#jovenesProyectos{
+
+}
+#jovenesProyectos fieldset {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-radius: 4px 4px 0 0;
+    box-shadow:none;
+    margin-top: 1em;
+    padding: 1.5em;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+#jovenesProyectos .tblFooters {
+    /*margin-top: -16px;*/
+    background: none;
+    border:none;
+    text-align: center;
+    margin-bottom: -34px;
+    margin-top: -16px;
+}
+#jovenesProyectos .camposRequeridos {
+    display: none;
+}
+#jovenesProyectos form fieldset .item {
+    padding: 1px;
+}
+</style>
+
+
+
+<script type="text/javascript">
+
+function before_submit_jovenesProyecto(){
+
+	wait("#tbody_jovenesProyectos");
+}
+
+function remove_jovenesProyecto( itemOid ){
+
+	before_submit_jovenesProyecto();
+	soft_load(false, "doAction?action=delete_jovenesProyecto_session&item_oid="+itemOid, "GET", null, show_jovenesProyectos, false);
+}
+
+function add_jovenesProyecto( data ){
+	show_jovenesProyectos( data );
+	$("#item_oid").val("");
+	$("#item_oid").blur();
+	//$("#item_oid").focus();
+}
+
+function show_jovenesProyectos( data ){
+	
+	var data = $.parseJSON(data);
+	if( data != null && data["error"]!=null){
+		showMessageError( data["error"], true );
+	}
+	
+	if( data != null && data["jovenesProyectos"]!=null){
+
+		var jovenesProyectos = data["jovenesProyectos"];
+		var jovenesProyectoColumns = data["jovenesProyectoColumns"];
+		var jovenesProyectoColumnsAlign = data["jovenesProyectoColumnsAlign"];
+		var jovenesProyectoColumnsLabels = data["jovenesProyectoColumnsLabels"];
+
+		$('#thead_jovenesProyectos').find('tr').remove();
+		$("#thead_jovenesProyectos").last().append( $('<tr>') );
+		var trHeadJovenesProyecto = $('#thead_jovenesProyectos').find('tr').last();
+		
+		for( var colIndex=0; colIndex < jovenesProyectoColumnsLabels.length;colIndex++){
+
+			var label = jovenesProyectoColumnsLabels[colIndex];
+			var align =  jovenesProyectoColumnsAlign[colIndex];
+			trHeadJovenesProyecto.append($('<th>')
+	                .text( label )
+	                .attr('style', 'text-align:' + align + ';')
+	            );
+			
+		}
+
+		$('#tbody_jovenesProyectos').find('tr').remove();
+				
+		for( var index=0; index< jovenesProyectos.length;index++){
+
+			var jovenesProyecto = jovenesProyectos[index];
+
+			$("#tbody_jovenesProyectos").last().append( $('<tr>') );
+			
+			var trJovenesProyecto = $('#tbody_jovenesProyectos').find('tr').last();
+			
+			for( var colIndex=0; colIndex < jovenesProyectoColumns.length;colIndex++){
+
+				var column = jovenesProyectoColumns[colIndex];
+				var align =  jovenesProyectoColumnsAlign[colIndex];
+				var valor = jovenesProyecto[column]; 
+
+				trJovenesProyecto.append($('<td>')
+		                .text( valor )
+		                .attr('style', 'text-align:' + align + ';')
+		            );
+				
+			}
+
+			if(jovenesProyecto["bl_agregado"]==1){
+				trJovenesProyecto.append($('<td>')
+						.attr('style', 'text-align:center;')
+						.append($('<href>')
+								.append($('<img>')
+						                .attr('src', '{WEB_PATH}css/smile/images/chk_off.png')
+						                .text('quitar')
+						            )
+						        .attr('href', '#')
+						        .attr('style', 'cursor:pointer;')
+						        .attr('onclick', 'javascript: remove_jovenesProyecto( encodeURI( \"' + jovenesProyecto["item_oid"] +  '\")); return false;' )
+				            )
+		            ); 
+			}
+			else trJovenesProyecto.append($('<td>'));
+
+		}
+		
+	}
+
+	wakeUp("#tbody_jovenesProyectos");
+	
+	$('#edit_jovenesProyecto').each (function(){
+		  this.reset();
+		});
+	
+	
+}
+
+
+
+</script>
+<div id="jovenesProyectos">
+<fieldset>
+	<legend>{jovenesProyectos_title}</legend>
+<table id="jovenesProyectos">
+   	<thead id="thead_jovenesProyectos">
+   	<tr>
+   		<!-- BEGIN: jovenesProyecto_th -->
+   		<th style="text-align: {align};">{jovenesProyecto_label}</th>
+   		<!-- END: jovenesProyecto_th -->
+   		<th></th>
+   	</tr>
+   	</thead>
+   	<tbody id="tbody_jovenesProyectos">
+   	<!-- BEGIN: jovenesProyecto -->   	
+   	<tr>
+   		<!-- BEGIN: jovenesProyecto_data -->	
+   		<td style="text-align: {align};">{data}</td>
+   		<!-- END: jovenesProyecto_data -->
+   		
+   		<td style="text-align: center;">
+   			<!-- BEGIN:editar_jovenesProyecto -->
+   			<a href="#"><img src='{WEB_PATH}css/smile/images/chk_off.png' style="cursor:pointer;" onclick="javascript: remove_jovenesProyecto(encodeURI('{item_oid}')); return false;"></a>
+   			<!-- END:editar_jovenesProyecto -->
+   		</td>
+   	</tr>
+   	<!-- END: jovenesProyecto -->
+   	</tbody>
+</table>
+<br />
+{formulario}
+</fieldset>
+    
+</div>
+<!-- END: main -->

@@ -1,0 +1,172 @@
+<!-- BEGIN: main -->
+<style>
+#presupuestos_tipo2{
+
+}
+#presupuestos_tipo2 fieldset {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-radius: 4px 4px 0 0;
+    box-shadow:none;
+    margin-top: 1em;
+    padding: 1.5em;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+#presupuestos_tipo2 .tblFooters {
+    /*margin-top: -16px;*/
+    background: none;
+    border:none;
+    text-align: center;
+    margin-bottom: -34px;
+    margin-top: -16px;
+}
+#presupuestos_tipo2 .camposRequeridos {
+    display: none;
+}
+#presupuestos_tipo2 form fieldset .item {
+    padding: 1px;
+}
+#total_tipo2{
+	text-align: right;
+	font-weight: bold;
+}
+</style>
+
+
+
+<script type="text/javascript">
+
+function before_submit_presupuesto_tipo2(){
+
+	wait("#tbody_presupuestos_tipo2");
+}
+
+function remove_presupuesto_tipo2( itemOid ){
+
+	before_submit_presupuesto_tipo2();
+	soft_load(false, "doAction?action=delete_presupuesto_tipo2_session&item_oid="+itemOid, "GET", null, show_presupuestos_tipo2, false);
+}
+
+function add_presupuesto_tipo2( data ){
+	show_presupuestos_tipo2( data );
+	$("#item_oid").val("");
+	$("#item_oid").blur();
+	//$("#item_oid").focus();
+}
+
+function show_presupuestos_tipo2( data ){
+	
+	var data = $.parseJSON(data);
+	if( data != null && data["error"]!=null){
+		showMessageError( data["error"], true );
+	}
+	if( data != null && data["presupuestos_tipo2"]!=null){
+
+		var presupuestos_tipo2 = data["presupuestos_tipo2"];
+		var total_tipo2 = data["total_tipo2"];
+		var presupuesto_tipo2Columns = data["presupuesto_tipo2Columns"];
+		var presupuesto_tipo2ColumnsAlign = data["presupuesto_tipo2ColumnsAlign"];
+		var presupuesto_tipo2ColumnsLabels = data["presupuesto_tipo2ColumnsLabels"];
+		$('#tot_tipo2').html(total_tipo2);
+		$('#thead_presupuestos_tipo2').find('tr').remove();
+		$("#thead_presupuestos_tipo2").last().append( $('<tr>') );
+		var trHeadPresupuesto = $('#thead_presupuestos_tipo2').find('tr').last();
+		
+		for( var colIndex=0; colIndex < presupuesto_tipo2ColumnsLabels.length;colIndex++){
+
+			var label = presupuesto_tipo2ColumnsLabels[colIndex];
+			var align =  presupuesto_tipo2ColumnsAlign[colIndex];
+			trHeadPresupuesto.append($('<th>')
+	                .text( label )
+	                .attr('style', 'text-align:' + align + ';')
+	            );
+			
+		}
+
+		$('#tbody_presupuestos_tipo2').find('tr').remove();
+				
+		for( var index=0; index< presupuestos_tipo2.length;index++){
+
+			var presupuesto_tipo2 = presupuestos_tipo2[index];
+
+			$("#tbody_presupuestos_tipo2").last().append( $('<tr>') );
+			
+			var trPresupuesto = $('#tbody_presupuestos_tipo2').find('tr').last();
+			
+			for( var colIndex=0; colIndex < presupuesto_tipo2Columns.length;colIndex++){
+
+				var column = presupuesto_tipo2Columns[colIndex];
+				var align =  presupuesto_tipo2ColumnsAlign[colIndex];
+				var valor = presupuesto_tipo2[column]; 
+
+				trPresupuesto.append($('<td>')
+		                .text( valor )
+		                .attr('style', 'text-align:' + align + ';')
+		            );
+				
+			}
+
+
+			trPresupuesto.append($('<td>')
+					.attr('style', 'text-align:center;')
+					.append($('<href>')
+							.append($('<img>')
+					                .attr('src', '{WEB_PATH}css/smile/images/chk_off.png')
+					                .text('quitar')
+					            )
+					        .attr('href', '#')
+					        .attr('style', 'cursor:pointer;')
+					        .attr('onclick', 'javascript: remove_presupuesto_tipo2( encodeURI( \"' + presupuesto_tipo2["item_oid"] +  '\")); return false;' )
+			            )
+	            ); 
+
+		}
+		
+	}
+
+	wakeUp("#tbody_presupuestos_tipo2");
+	
+	$('#edit_presupuesto_tipo2').each (function(){
+		  this.reset();
+		});
+	
+	sumar_total();
+}
+
+
+
+</script>
+<div id="presupuestos_tipo2">
+<fieldset>
+	<legend>{presupuestos_tipo2_title}</legend>
+<table id="presupuestos_tipo2">
+   	<thead id="thead_presupuestos_tipo2">
+   	<tr>
+   		<!-- BEGIN: presupuesto_tipo2_th -->
+   		<th style="text-align: {align};">{presupuesto_tipo2_label}</th>
+   		<!-- END: presupuesto_tipo2_th -->
+   		<th></th>
+   	</tr>
+   	</thead>
+   	<tbody id="tbody_presupuestos_tipo2">
+   	<!-- BEGIN: presupuesto_tipo2 -->   	
+   	<tr>
+   		<!-- BEGIN: presupuesto_tipo2_data -->	
+   		<td style="text-align: {align};">{data}</td>
+   		<!-- END: presupuesto_tipo2_data -->
+   		
+   		<td style="text-align: center;">
+   			<!-- BEGIN:editar_presupuesto_tipo2 -->
+   			<a href="#"><img src='{WEB_PATH}css/smile/images/chk_off.png' style="cursor:pointer;" onclick="javascript: remove_presupuesto_tipo2(encodeURI('{item_oid}')); return false;"></a>
+   			<!-- END:editar_presupuesto_tipo2 -->
+   		</td>
+   	</tr>
+   	<!-- END: presupuesto_tipo2 -->
+   	</tbody>
+</table>
+<div id='total_tipo2'>{total_tipo2_lbl}:<span id=tot_tipo2>{total_tipo2}</span></div>
+
+{formulario}
+</fieldset>
+    
+</div>
+<!-- END: main -->
