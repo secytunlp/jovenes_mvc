@@ -5,26 +5,26 @@ SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM cyt_solicitudjovenes_estado WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = cyt_solicitudjovenes_estado.solicitud_oid AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = cyt_solicitudjovenes_estado.solicitud_oid AND cd_periodo = 13
 );
 
 DELETE FROM presupuestojovenes  WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = presupuestojovenes .cd_solicitud AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = presupuestojovenes .cd_solicitud AND cd_periodo = 13
 );
 
 
 DELETE FROM solicitudjovenesproyecto  WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = solicitudjovenesproyecto .cd_solicitud AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = solicitudjovenesproyecto .cd_solicitud AND cd_periodo = 13
 );
 
 DELETE FROM solicitudjovenesbeca  WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = solicitudjovenesbeca .cd_solicitud AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = solicitudjovenesbeca .cd_solicitud AND cd_periodo = 13
 );
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,35 +33,35 @@ SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM cyt_solicitudjovenes_estado WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = cyt_solicitudjovenes_estado.solicitud_oid AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = cyt_solicitudjovenes_estado.solicitud_oid AND cd_periodo = 13
 );
 
 DELETE FROM presupuestojovenes  WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = presupuestojovenes .cd_solicitud AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = presupuestojovenes .cd_solicitud AND cd_periodo = 13
 );
 
 
 DELETE FROM solicitudjovenesproyecto  WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = solicitudjovenesproyecto .cd_solicitud AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = solicitudjovenesproyecto .cd_solicitud AND cd_periodo = 13
 );
 
 DELETE FROM cyt_evaluacionjovenes_estado WHERE EXISTS (
 SELECT solicitudjovenes.cd_solicitud
 FROM solicitudjovenes INNER JOIN evaluacionjovenes ON solicitudjovenes.cd_solicitud = evaluacionjovenes.cd_solicitud
-WHERE evaluacionjovenes.cd_evaluacion = cyt_evaluacionjovenes_estado.evaluacion_oid AND solicitudjovenes.cd_periodo = 12
+WHERE evaluacionjovenes.cd_evaluacion = cyt_evaluacionjovenes_estado.evaluacion_oid AND solicitudjovenes.cd_periodo = 13
 );
 
 DELETE FROM evaluacionjovenes  WHERE EXISTS (
 SELECT cd_solicitud
 FROM solicitudjovenes
-WHERE solicitudjovenes.cd_solicitud = evaluacionjovenes .cd_solicitud AND cd_periodo = 12
+WHERE solicitudjovenes.cd_solicitud = evaluacionjovenes .cd_solicitud AND cd_periodo = 13
 );
 
-DELETE FROM solicitudjovenes WHERE cd_periodo = 12;
+DELETE FROM solicitudjovenes WHERE cd_periodo = 13;
 SET FOREIGN_KEY_CHECKS=1;
 
 
@@ -164,7 +164,12 @@ WHERE NOT EXISTS (SELECT B.cd_beca FROM beca B INNER JOIN docente D2 ON B.cd_doc
 INSERT INTO beca 
 SELECT null, docente.cd_docente, 1, becas_unlp_nuevas.ds_tipobeca, becas_unlp_nuevas.dt_desde, becas_unlp_nuevas.dt_hasta, null 
 FROM `becas_unlp_nuevas` INNER JOIN docente ON becas_unlp_nuevas.nu_documento = docente.nu_documento
-WHERE becas_unlp_nuevas.dt_desde>'2019-01-01' AND NOT EXISTS (SELECT B.cd_beca FROM beca B INNER JOIN docente D2 ON B.cd_docente = D2.cd_docente WHERE bl_unlp = 1 AND becas_unlp_nuevas.nu_documento = D2.nu_documento AND becas_unlp_nuevas.ds_tipobeca = B.ds_tipobeca)
+WHERE NOT EXISTS (SELECT B.cd_beca FROM beca B INNER JOIN docente D2 ON B.cd_docente = D2.cd_docente WHERE bl_unlp = 1 AND becas_unlp_nuevas.nu_documento = D2.nu_documento AND becas_unlp_nuevas.ds_tipobeca = B.ds_tipobeca)
+
+UPDATE `beca` INNER JOIN docente ON beca.cd_docente = docente.cd_docente
+INNER JOIN `becas_unlp_nuevas` ON becas_unlp_nuevas.nu_documento = docente.nu_documento AND beca.dt_hasta != becas_unlp_nuevas.dt_hasta AND beca.ds_tipobeca = becas_unlp_nuevas.ds_tipobeca
+SET beca.dt_hasta = becas_unlp_nuevas.dt_hasta, docente.dt_nacimiento = CASE WHEN becas_unlp_nuevas.dt_nacimiento != '0000-00-00' then becas_unlp_nuevas.dt_nacimiento end, docente.ds_mail = CASE WHEN becas_unlp_nuevas.ds_mail != '' THEN  becas_unlp_nuevas.ds_mail end
+
 
 ####################################### * 2018-2019 MaestrÃ­a, 2019-2020 Doctorado (OJO!!! con la fecha desde) ########################
 INSERT INTO beca 
@@ -176,12 +181,28 @@ WHERE becas_unlp_nuevas.ds_tipobeca like '%*%' AND NOT EXISTS (SELECT B.cd_beca 
 SELECT cd_beca,CONCAT(D.ds_apellido,', ',D.ds_nombre) AS Docente, CONCAT(D.nu_precuil,'-',D.nu_documento,'-',D.nu_postcuil) AS CUIL, 
 B.ds_tipobeca,dt_desde,dt_hasta, bl_unlp, ds_resumen 
 FROM beca B INNER JOIN docente D ON B.cd_docente = D.cd_docente 
-WHERE dt_hasta >= '2020-01-01'
+WHERE dt_hasta >= '2023-04-01'
 ORDER BY ds_apellido, ds_nombre
 
 ##############################Actualizar resumen de beca #######################################3
+
+SELECT T.codigo, C.denominacion, P.apellido, P.nombre, P.cuil, DP.numero_documento, DA.resumen_tema_periodo
+FROM PERSONA P	
+INNER JOIN DATO_PERSONAL DP ON DP.persona_id = P.id and DP.fecha_fin_vigencia is null			
+INNER JOIN PROPIETARIO PROP ON PROP.persona_responsable_id = P.id	
+INNER JOIN TRAMITE T ON T.propietario_id = PROP.id
+INNER JOIN CONVOCATORIA C ON T.convocatoria_id = C.id
+INNER JOIN ESTADO E ON T.estado_id = E.id
+INNER JOIN DATO_ACADEMICO DA ON DA.persona_id = P.id and DA.fecha_fin_vigencia is null	
+
+WHERE
+C.grupo_convocatoria_id = 8
+AND C.id in (400202201,400202202)
+AND E.id = 14
+
+
 UPDATE `beca` INNER JOIN docente ON beca.cd_docente = docente.cd_docente
-INNER JOIN beca_sigeva ON beca_sigeva.dni = docente.nu_documento AND beca.dt_hasta >= '2020-03-01' 
+INNER JOIN beca_sigeva ON beca_sigeva.dni = docente.nu_documento AND beca.dt_hasta >= '2023-01-01' 
 SET beca.ds_resumen = beca_sigeva.resumen
 
 ##############################Control de evaluadores #################################################
@@ -199,7 +220,7 @@ CREATE TABLE `aux_evaluadores` (
 COMMIT;
 
 
-################################### Evaluadores que no están con ese perfil ##################################
+################################### Evaluadores que no estï¿½n con ese perfil ##################################
 
 SELECT * 
 FROM `aux_evaluadores` 

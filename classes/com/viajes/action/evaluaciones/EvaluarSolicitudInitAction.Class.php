@@ -571,7 +571,7 @@ class EvaluarSolicitudInitAction extends UpdateEntityInitAction {
 			$oCriteria->setExpresion($filter);
 			$oCriteria->addNull('fechaHasta');
 			$tSolicitud = DAOFactory::getSolicitudDAO()->getTableName();
-             $periodoAnt = $oPerioActual->getOid()-2;//OJO esto es menos 2 solo por pandemia año 2021 (2020 no hubo)
+             $periodoAnt = $oPerioActual->getOid()-1;
 			$oCriteria->addFilter("$tSolicitud.cd_periodo", $periodoAnt, '=');
 
 			$oSolicitudManager =  ManagerFactory::getSolicitudManager();

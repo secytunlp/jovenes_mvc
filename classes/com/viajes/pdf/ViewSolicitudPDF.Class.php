@@ -109,9 +109,11 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 		$this->ProyectosActuales();
 		$this->separador(CYT_MSG_SOLICITUD_PROYECTOS_ANTERIORES);
 		$this->ProyectosAnteriores();
-		
-		
-		$this->firma1();
+
+        if ($this->getYear() < 2022 ) {
+            $this->firma1();
+        }
+
 		$this->AddPage();
 	
        $this->Apellido();
@@ -151,7 +153,13 @@ class ViewSolicitudPDF extends CdtPDFPrint{
 		$total +=$this->Presupuestos($this->getPresupuestosTipo5());
 		$this->Cell ( $this->getMaxWidth(), 8, CYT_MSG_SOLICITUD_TOTAL.': '.CYTSecureUtils::formatMontoToView($total), 'LTBR',0,'R',1);
 		$this->ln(10);
-		$this->firma2();
+        if ($this->getYear() > 2021 ) {
+            $this->firma1();
+        }
+        else{
+            $this->firma2();
+        }
+
 	}
 	
 	/**

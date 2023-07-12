@@ -344,6 +344,8 @@
 	<action name='cambiarEstadoEvaluacion_init' class='CambiarEstadoEvaluacionInitAction'
 		currentMenuGroup='10' />
 	<action name='cambiarEstadoEvaluacion' class='CambiarEstadoEvaluacionAction' />
+
+	<action name='descargar_manual' class='DescargarManualAction' />
 	
 	<!-- titulos -->
 	<action name='add_titulo_init' class='AddTituloInitAction' />

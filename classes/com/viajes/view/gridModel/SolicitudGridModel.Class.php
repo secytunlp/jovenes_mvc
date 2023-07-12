@@ -68,11 +68,16 @@ class SolicitudGridModel extends GridModel {
 		}
 		$column = GridModelBuilder::buildColumn( "oid", CYT_LBL_SOLICITUD_ARCHIVOS, 60, CDT_CMP_GRID_TEXTALIGN_RIGHT,"",new GridFilesValueFormat() ) ;
 		$this->addColumn( $column );
-		
-		$oUser = CdtSecureUtils::getUserLogged();
+
+        if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_EVALUAR_SOLICITUD )) {
+            //acciones sobre la lista
+            $this->buildAction( "descargar_manual", "Instructivo", CYT_LBL_EVALUACION_INSTRUCTIVO, "image", "excel", false, "" );
+
+        }
 		if (CdtSecureUtils::hasPermission ( $oUser, CYT_FUNCTION_AGREGAR_SOLICITUD )) {
 			//acciones sobre la lista
-			$this->buildAction("add_solicitud_init", "add_solicitud_init", CYT_MSG_SOLICITUD_TITLE_ADD, "image", "add");
+            $this->buildAction("add_solicitud_init", "add_solicitud_init", CYT_MSG_SOLICITUD_TITLE_ADD, "image", "add");
+
 		}
 	}
 

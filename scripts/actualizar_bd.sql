@@ -3027,3 +3027,549 @@ INSERT INTO subanteriormaximo VALUES (10, NULL, 1, 5, 84, 5, 5);
 
 
 INSERT INTO antjustificacionmaximo VALUES (10, NULL, 2, 0, 55, 0, 15);
+
+#######################################################20/09/2022########################################################################
+INSERT INTO `unidadaprobada` (`cd_unidad`, `cd_periodo`) VALUES
+(1874, 13),
+(1899, 13),
+(5380, 13),
+(5381, 13),
+(5383, 13),
+(5415, 13),
+(5416, 13),
+(5419, 13),
+(5420, 13),
+(5421, 13),
+(5422, 13),
+(5423, 13),
+(5424, 13),
+(5425, 13),
+(5426, 13),
+(5738, 13),
+(5739, 13),
+(6292, 13),
+(6302, 13),
+(6303, 13),
+(6325, 13),
+(6995, 13),
+(7790, 13),
+(7835, 13),
+(8017, 13),
+(8378, 13),
+(10311, 13),
+(11097, 13),
+(11992, 13),
+(12366, 13),
+(12706, 13),
+(12928, 13),
+(12992, 13),
+(13029, 13),
+(13074, 13),
+(13078, 13),
+(13086, 13),
+(13160, 13),
+(13170, 13),
+(13177, 13),
+(13209, 13),
+(13865, 13),
+(13942, 13),
+(14050, 13),
+(14102, 13),
+(14122, 13),
+(14330, 13),
+(14536, 13),
+(20009, 13),
+(20010, 13),
+(20012, 13),
+(20013, 13),
+(20260, 13),
+(20408, 13),
+(20461, 13),
+(21075, 13),
+(21076, 13),
+(21594, 13),
+(22104, 13),
+(22126, 13),
+(22246, 13),
+(22262, 13),
+(22347, 13),
+(22514, 13),
+(22515, 13),
+(22516, 13),
+(22518, 13),
+(22519, 13),
+(110129, 13),
+(110130, 13),
+(110131, 13),
+(110332, 13),
+(110334, 13),
+(110505, 13),
+(110524, 13),
+(110525, 13),
+(110526, 13),
+(110603, 13),
+(110620, 13),
+(110621, 13),
+(110633, 13),
+(110634, 13),
+(110635, 13),
+(110636, 13),
+(111012, 13),
+(111027, 13),
+(111108, 13),
+(111120, 13),
+(111122, 13),
+(111123, 13),
+(111124, 13),
+(111126, 13),
+(111128, 13),
+(111130, 13),
+(111131, 13),
+(111228, 13),
+(111233, 13),
+(111234, 13),
+(111236, 13),
+(111237, 13),
+(111238, 13),
+(111324, 13),
+(111414, 13),
+(111415, 13),
+(111611, 13),
+(111712, 13),
+(111720, 13),
+(111827, 13),
+(111839, 13),
+(111849, 13),
+(111850, 13),
+(111851, 13),
+(111852, 13),
+(111853, 13),
+(111862, 13),
+(900003, 13),
+(900007, 13),
+(900008, 13),
+(900009, 13),
+(900010, 13),
+(900011, 13),
+(900012, 13),
+(900013, 13),
+(900014, 13),
+(900015, 13),
+(900016, 13),
+(900017, 13),
+(900018, 13),
+(900019, 13),
+(900020, 13),
+(900021, 13),
+(900022, 13),
+(900023, 13),
+(900024, 13),
+(900025, 13),
+(900026, 13),
+(900027, 13),
+(900028, 13),
+(900029, 13),
+(900030, 13),
+(900031, 13),
+(900032, 13),
+(900033, 13),
+(900034, 13),
+(111863, 13),
+(900035, 13),
+(900036, 13),
+(900037, 13),
+(900038, 13),
+(900039, 13),
+(5384, 13),
+(5372, 13),
+(110335, 13),
+(20216, 13),
+(900040, 13),
+(900041, 13),
+(900042, 13),
+(900043, 13),
+(900044, 13),
+(900045, 13),
+(900046, 13),
+(900047, 13),
+(900048, 13),
+(900049, 13),
+(900050, 13),
+(900051, 13),
+(9145, 13),
+(110716, 13),
+(110717, 13),
+(900052, 13),
+(900053, 13),
+(111132, 13),
+(111133, 13),
+(110544, 13),
+(111240, 13),
+(111134, 13),
+(111864, 13),
+(900054, 13),
+(900055, 13),
+(900056, 13),
+(900057, 13),
+(900058, 13),
+(900059, 13),
+(900060, 13),
+(900061, 13),
+(900062, 13),
+(5378, 13),
+(5382, 13),
+(900066, 13),
+(900067, 13);
+
+INSERT INTO modeloplanillajovenes (
+cd_modeloplanilla ,
+ds_modelo ,
+nu_max ,
+cd_periodo
+)
+VALUES (
+NULL , 'Planilla', '100', '13'
+);
+
+INSERT INTO posgradomaximo VALUES (11, NULL, 1, 31, 5);
+INSERT INTO posgradomaximo VALUES (11, NULL, 2, 31, 3);
+INSERT INTO posgradomaximo VALUES (11, NULL, 3, 31, 1);
+INSERT INTO posgradomaximo VALUES (11, NULL, 4, 31, 0);
+
+
+
+INSERT INTO antacadmaximo VALUES (11, NULL, 1, 3, 31, 3, 12);
+INSERT INTO antacadmaximo VALUES (11, NULL, 9, 1, 31, 1, 6);
+INSERT INTO antacadmaximo VALUES (11, NULL, 7, 0, 31, 0, 0);
+INSERT INTO antacadmaximo VALUES (11, NULL, 4, 2, 31, 2, 2);
+INSERT INTO antacadmaximo VALUES (11, NULL, 8, 0, 31, 0, 2);
+
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 1, 8);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 2, 8);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 3, 8);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 4, 8);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 5, 8);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 6, 8);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 7, 6);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 8, 4);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 9, 4);
+INSERT INTO cargomaximojovenes VALUES (11, NULL, 10, 2);
+
+INSERT INTO antotrosmaximo VALUES (11, NULL, 7, 0, 49, 0, 2);
+INSERT INTO antotrosmaximo VALUES (11, NULL, 8, 3, 48, 3, 0);
+INSERT INTO antotrosmaximo VALUES (11, NULL, 9, 2, 48, 2, 0);
+INSERT INTO antotrosmaximo VALUES (11, NULL, 10, 1, 48, 1, 0);
+INSERT INTO antotrosmaximo VALUES (11, NULL, 11, 1, 48, 1, 0);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 36, 2, 81, 2, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 37, 7, 81, 7, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 38, 12, 81, 12, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 39, 2, 81, 2, 0);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 54, 2, 82, 2, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 52, 0.5, 82, 0.5, 0);
+
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 42, 20, 83, 20, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 43, 8, 83, 8, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 44, 10, 83, 10, 0);
+
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 14, 10, 84, 10, 40);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 55, 10, 85, 0, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 56, 5, 85, 0, 0);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 57, 3, 85, 0, 15);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 48, 3, 84, 0, 9);
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 58, 0, 84, 0, 1);
+
+INSERT INTO antproduccionmaximo VALUES (11, NULL, 50, 2, 84, 2, 2);
+
+
+
+INSERT INTO subanteriormaximo VALUES (11, NULL, 1, 5, 84, 5, 5);
+
+
+
+INSERT INTO antjustificacionmaximo VALUES (11, NULL, 2, 0, 55, 0, 15);
+
+#######################################################05/05/2023########################################################################
+INSERT INTO `unidadaprobada` (`cd_unidad`, `cd_periodo`) VALUES
+(1874, 14),
+(1899, 14),
+(5380, 14),
+(5381, 14),
+(5383, 14),
+(5415, 14),
+(5416, 14),
+(5419, 14),
+(5420, 14),
+(5421, 14),
+(5422, 14),
+(5423, 14),
+(5424, 14),
+(5425, 14),
+(5426, 14),
+(5738, 14),
+(5739, 14),
+(6292, 14),
+(6302, 14),
+(6303, 14),
+(6325, 14),
+(6995, 14),
+(7790, 14),
+(7835, 14),
+(8017, 14),
+(8378, 14),
+(10311, 14),
+(11097, 14),
+(11992, 14),
+(12366, 14),
+(12706, 14),
+(12928, 14),
+(12992, 14),
+(13029, 14),
+(13074, 14),
+(13078, 14),
+(13086, 14),
+(13160, 14),
+(13170, 14),
+(13177, 14),
+(13209, 14),
+(13865, 14),
+(13942, 14),
+(14050, 14),
+(14102, 14),
+(14122, 14),
+(14330, 14),
+(14536, 14),
+(20009, 14),
+(20010, 14),
+(20012, 14),
+(20013, 14),
+(20260, 14),
+(20408, 14),
+(20461, 14),
+(21075, 14),
+(21076, 14),
+(21594, 14),
+(22104, 14),
+(22126, 14),
+(22246, 14),
+(22262, 14),
+(22347, 14),
+(22514, 14),
+(22515, 14),
+(22516, 14),
+(22518, 14),
+(22519, 14),
+(110129, 14),
+(110130, 14),
+(110131, 14),
+(110332, 14),
+(110334, 14),
+(110505, 14),
+(110524, 14),
+(110525, 14),
+(110526, 14),
+(110603, 14),
+(110620, 14),
+(110621, 14),
+(110633, 14),
+(110634, 14),
+(110635, 14),
+(110636, 14),
+(111012, 14),
+(111027, 14),
+(111108, 14),
+(111120, 14),
+(111122, 14),
+(111123, 14),
+(111124, 14),
+(111126, 14),
+(111128, 14),
+(111130, 14),
+(111131, 14),
+(111228, 14),
+(111233, 14),
+(111234, 14),
+(111236, 14),
+(111237, 14),
+(111238, 14),
+(111324, 14),
+(111414, 14),
+(111415, 14),
+(111611, 14),
+(111712, 14),
+(111720, 14),
+(111827, 14),
+(111839, 14),
+(111849, 14),
+(111850, 14),
+(111851, 14),
+(111852, 14),
+(111853, 14),
+(111862, 14),
+(900003, 14),
+(900007, 14),
+(900008, 14),
+(900009, 14),
+(900010, 14),
+(900011, 14),
+(900012, 14),
+(900013, 14),
+(900014, 14),
+(900015, 14),
+(900016, 14),
+(900017, 14),
+(900018, 14),
+(900019, 14),
+(900020, 14),
+(900021, 14),
+(900022, 14),
+(900023, 14),
+(900024, 14),
+(900025, 14),
+(900026, 14),
+(900027, 14),
+(900028, 14),
+(900029, 14),
+(900030, 14),
+(900031, 14),
+(900032, 14),
+(900033, 14),
+(900034, 14),
+(111863, 14),
+(900035, 14),
+(900036, 14),
+(900037, 14),
+(900038, 14),
+(900039, 14),
+(5384, 14),
+(5372, 14),
+(110335, 14),
+(20216, 14),
+(900040, 14),
+(900041, 14),
+(900042, 14),
+(900043, 14),
+(900044, 14),
+(900045, 14),
+(900046, 14),
+(900047, 14),
+(900048, 14),
+(900049, 14),
+(900050, 14),
+(900051, 14),
+(9145, 14),
+(110716, 14),
+(110717, 14),
+(900052, 14),
+(900053, 14),
+(111132, 14),
+(111133, 14),
+(110544, 14),
+(111240, 14),
+(111134, 14),
+(111864, 14),
+(900054, 14),
+(900055, 14),
+(900056, 14),
+(900057, 14),
+(900058, 14),
+(900059, 14),
+(900060, 14),
+(900061, 14),
+(900062, 14),
+(5378, 14),
+(5382, 14),
+(900066, 14),
+(900067, 14),
+    (900068, 14);
+
+#######################################################15/05/2023########################################################################
+INSERT INTO modeloplanillajovenes (
+    cd_modeloplanilla ,
+    ds_modelo ,
+    nu_max ,
+    cd_periodo
+)
+VALUES (
+           NULL , 'Planilla', '100', '14'
+       );
+
+INSERT INTO posgradomaximo VALUES (12, NULL, 1, 31, 5);
+INSERT INTO posgradomaximo VALUES (12, NULL, 2, 31, 3);
+INSERT INTO posgradomaximo VALUES (12, NULL, 3, 31, 1);
+INSERT INTO posgradomaximo VALUES (12, NULL, 4, 31, 0);
+
+
+
+INSERT INTO antacadmaximo VALUES (12, NULL, 1, 3, 31, 3, 12);
+INSERT INTO antacadmaximo VALUES (12, NULL, 9, 1, 31, 1, 6);
+INSERT INTO antacadmaximo VALUES (12, NULL, 7, 0, 31, 0, 0);
+INSERT INTO antacadmaximo VALUES (12, NULL, 4, 2, 31, 2, 2);
+INSERT INTO antacadmaximo VALUES (12, NULL, 8, 0, 31, 0, 2);
+
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 1, 8);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 2, 8);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 3, 8);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 4, 8);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 5, 8);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 6, 8);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 7, 6);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 8, 4);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 9, 4);
+INSERT INTO cargomaximojovenes VALUES (12, NULL, 10, 2);
+
+INSERT INTO antotrosmaximo VALUES (12, NULL, 7, 0, 49, 0, 2);
+INSERT INTO antotrosmaximo VALUES (12, NULL, 8, 3, 48, 3, 0);
+INSERT INTO antotrosmaximo VALUES (12, NULL, 9, 2, 48, 2, 0);
+INSERT INTO antotrosmaximo VALUES (12, NULL, 10, 1, 48, 1, 0);
+INSERT INTO antotrosmaximo VALUES (12, NULL, 11, 1, 48, 1, 0);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 36, 2, 81, 2, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 37, 7, 81, 7, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 38, 12, 81, 12, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 39, 2, 81, 2, 0);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 54, 2, 82, 2, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 52, 0.5, 82, 0.5, 0);
+
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 42, 20, 83, 20, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 43, 8, 83, 8, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 44, 10, 83, 10, 0);
+
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 14, 10, 84, 10, 40);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 55, 10, 85, 0, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 56, 5, 85, 0, 0);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 57, 3, 85, 0, 15);
+
+
+
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 48, 3, 84, 0, 9);
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 58, 0, 84, 0, 1);
+
+INSERT INTO antproduccionmaximo VALUES (12, NULL, 50, 2, 84, 2, 2);
+
+
+
+INSERT INTO subanteriormaximo VALUES (12, NULL, 1, 5, 84, 5, 5);
+
+
+
+INSERT INTO antjustificacionmaximo VALUES (12, NULL, 2, 0, 55, 0, 15);

@@ -73,6 +73,8 @@ define('CYT_LBL_SOLICITUD_MAIL_INVESTIGADOR', 'Investigador', true);
 define('CYT_LBL_EVALUACION_MAIL_SUBJECT', 'Evaluación de Subsidios para Jóvenes Investigadores', true);
 define('CYT_LBL_EVALUACION_MAIL_COMMENT', 'Solicitud enviada para evaluar', true);
 
+define('CYT_LBL_EVALUACION_INSTRUCTIVO', 'Instructivo_Evaluador', true);
+
 define('CYT_LBL_SOLICITUD_OBSEVACIONES', 'Observaciones', true);
 define('CYT_LBL_SOLICITUD_EVALUADORES', 'Evaluadores', true);
 define('CYT_LBL_SOLICITUD_PRIMER_EVALUADOR', 'Interno', true);
